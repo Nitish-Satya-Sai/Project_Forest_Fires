@@ -372,7 +372,7 @@ elif optionm=="Forest Fires Prediction":
         rf = RandomForestClassifier(criterion= 'gini', max_depth= 3, n_estimators= 50,random_state=42)
         x_train,x_test,y_train,y_test = train_test_split(X,Target_encoded,test_size=0.3,random_state=42)
         rf.fit(x_train,y_train)
-        prediction = rf.predict(np.array([v1,v2,v3,v4,v5,v6,v7,v8,v9,v10]).reshape(1,10))
+        prediction = rf.predict(np.array([float(v1),float(v2),float(v3),float(v4),float(v5),float(v6),float(v7),float(v8),float(v9),float(v10)]).reshape(1,10))
         st.write("The output is: ",prediction[0])
 
 elif optionm=="The Power of PCA":

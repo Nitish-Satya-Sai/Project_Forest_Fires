@@ -115,9 +115,6 @@ if optionm=="The Motivation behind the project":
     st.write("##### The main concentric goal🎯 of taking this initiative of doing this work is to predict the chance of forest fires based on various parameters. If we take the statistics from 2012 to 2021, an average of 7.4 million acres of forest are impacted annually due to forest fires 😱. We can at least reduce the impact of these forest fires if we can able to predict the chance of occurrence of fires based on the various parameters. ")
     
     st.write("## Dataset description:")
-    
-
-
     st.write('''
              
              
@@ -373,6 +370,7 @@ elif optionm=="Forest Fires Prediction":
         x_train,x_test,y_train,y_test = train_test_split(X,Target_encoded,test_size=0.3,random_state=42)
         rf.fit(x_train,y_train)
         df1 = pd.DataFrame(np.array([v1,v2,v3,v4,v5,v6,v7,v8,v9,v10]).reshape(1,10))
+        df2 = df1.iloc[:,0].astype(float)
         prediction = rf.predict(df1)
         st.write("The output is: ",prediction[0])
 

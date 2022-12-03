@@ -109,7 +109,7 @@ with st.sidebar:
 
 if optionm=="The Motivation behind the project":
     st.write("# The Motivation behind the project")
-    im = Image.open("D:/Michigan_State_University_Works/CMSE-830/Midterm-Project-2/Forest_Fires/fires.jpg") 
+    im = Image.open("fires.jpg") 
     st.image(im)
     st.write("[Image Source:](http://www.electronic-sirens.com/use-of-sirens-for-forest-fires/)")
     st.write("##### The main concentric goal🎯 of taking this initiative of doing this work is to predict the chance of forest fires based on various parameters. If we take the statistics from 2012 to 2021, an average of 7.4 million acres of forest are impacted annually due to forest fires 😱. We can at least reduce the impact of these forest fires if we can able to predict the chance of occurrence of fires based on the various parameters. ")

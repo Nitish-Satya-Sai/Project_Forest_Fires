@@ -369,8 +369,8 @@ elif optionm=="Forest Fires Prediction":
         rf = RandomForestClassifier(criterion= 'gini', max_depth= 3, n_estimators= 50,random_state=42)
         x_train,x_test,y_train,y_test = train_test_split(X,Target_encoded,test_size=0.3,random_state=42)
         rf.fit(x_train,y_train)
-        df1 = pd.DataFrame(np.array([v1,v2,v3,v4,v5,v6,v7,v8,v9,v10]).reshape(1,10))
-        df2 = df1.iloc[:,0].astype(float)
+        df1 = pd.DataFrame([v1,v2,v3,v4,v5,v6,v7,v8,v9,v10]).transpose()
+        df2 = df1.iloc[0,:].astype(float)
         prediction = rf.predict(df1)
         st.write("The output is: ",prediction[0])
 

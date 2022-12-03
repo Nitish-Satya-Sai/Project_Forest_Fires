@@ -344,26 +344,26 @@ elif optionm=="Model Building Stack":
 elif optionm=="Forest Fires Prediction":
     col1,col2,col3,col4,col5 = st.columns(5,gap="large")
     with col1:
-        v1 = st.slider(label = X.columns[0],min_value = X[X.columns[0]].min(),max_value=X[X.columns[0]].max(),step=0.1)
+        v1 = st.slider(label = X.columns[0],value = float(X[X.columns[0]].min()),min_value = X[X.columns[0]].min(),max_value=X[X.columns[0]].max(),step=0.1)
     with col2:
-        v2 = st.slider(label = X.columns[1],min_value = X[X.columns[1]].min(),max_value=X[X.columns[1]].max(),step=0.1)
+        v2 = st.slider(label = X.columns[1],value = float(X[X.columns[1]].min()),min_value = X[X.columns[1]].min(),max_value=X[X.columns[1]].max(),step=0.1)
     with col3:
-        v3 = st.slider(label = X.columns[2],min_value = X[X.columns[2]].min(),max_value=X[X.columns[2]].max(),step=0.1)
+        v3 = st.slider(label = X.columns[2],value = float(X[X.columns[2]].min()),min_value = X[X.columns[2]].min(),max_value=X[X.columns[2]].max(),step=0.1)
     with col4:
-        v4 = st.slider(label = X.columns[3],min_value = X[X.columns[3]].min(),max_value=X[X.columns[3]].max(),step=0.1)
+        v4 = st.slider(label = X.columns[3],value = float(X[X.columns[3]].min()),min_value = X[X.columns[3]].min(),max_value=X[X.columns[3]].max(),step=0.1)
     with col5:
-        v5 = st.slider(label = X.columns[4],min_value = X[X.columns[4]].min(),max_value=X[X.columns[4]].max(),step=0.1)
+        v5 = st.slider(label = X.columns[4],value = float(X[X.columns[4]].min()),min_value = X[X.columns[4]].min(),max_value=X[X.columns[4]].max(),step=0.1)
     col6,col7,col8,col9,col10 = st.columns(5,gap="large")
     with col6:
-        v6 = st.slider(label = X.columns[5],min_value = X[X.columns[5]].min(),max_value=X[X.columns[5]].max(),step=0.1)
+        v6 = st.slider(label = X.columns[5],value = float(X[X.columns[5]].min()),min_value = X[X.columns[5]].min(),max_value=X[X.columns[5]].max(),step=0.1)
     with col7:
-        v7 = st.slider(label = X.columns[6],min_value = X[X.columns[6]].min(),max_value=X[X.columns[6]].max(),step=0.1)
+        v7 = st.slider(label = X.columns[6],value = float(X[X.columns[6]].min()),min_value = X[X.columns[6]].min(),max_value=X[X.columns[6]].max(),step=0.1)
     with col8:
-        v8 = st.slider(label = X.columns[7],min_value = X[X.columns[7]].min(),max_value=X[X.columns[7]].max(),step=0.1)
+        v8 = st.slider(label = X.columns[7],value = float(X[X.columns[7]].min()),min_value = X[X.columns[7]].min(),max_value=X[X.columns[7]].max(),step=0.1)
     with col9:
-        v9 = st.slider(label = X.columns[8],min_value = X[X.columns[8]].min(),max_value=X[X.columns[8]].max(),step=0.1)
+        v9 = st.slider(label = X.columns[8],value = float(X[X.columns[8]].min()),min_value = X[X.columns[8]].min(),max_value=X[X.columns[8]].max(),step=0.1)
     with col10:
-        v10 = st.slider(label = X.columns[9],min_value = X[X.columns[9]].min(),max_value=X[X.columns[9]].max(),step=0.1)
+        v10 = st.slider(label = X.columns[9],value = float(X[X.columns[9]].min()),min_value = X[X.columns[9]].min(),max_value=X[X.columns[9]].max(),step=0.1)
         
     if st.button('Predict'):
         rf = RandomForestClassifier(criterion= 'gini', max_depth= 3, n_estimators= 50,random_state=42)

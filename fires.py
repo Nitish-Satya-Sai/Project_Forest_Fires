@@ -374,7 +374,7 @@ elif optionm=="Forest Fires Prediction":
         prediction = rf.predict(df1)
         if int(prediction[0])==0:
            st.write("There is no fire occurrence")
-           st.image("nofire.jpg")
+           st.image("nofire.png")
         elif int(prediction[0]==1):
            st.write("There is an occurrence of fire")
            st.image("fire.jpg")

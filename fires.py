@@ -290,7 +290,7 @@ elif optionm=="Model Building Stack":
                     }
                     },
                     'Decision_Tree' : {
-                    'model':DecisionTreeClassifier(),
+                    'model':DecisionTreeClassifier(random_state=42),
                     'params': {
                         "criterion" : ["gini", "entropy", "log_loss"],
                         "max_depth":list(range(1,4))
@@ -372,7 +372,12 @@ elif optionm=="Forest Fires Prediction":
         df1 = pd.DataFrame([v1,v2,v3,v4,v5,v6,v7,v8,v9,v10]).transpose()
         df2 = df1.iloc[0,:].astype(float)
         prediction = rf.predict(df1)
-        st.write("The output is: ",prediction[0])
+        if int(prediction[0])==0:
+           st.write("There is no fire occurrence")
+           st.image("nofire.jpg")
+        elif int(prediction[0]==1):
+           st.write("There is an occurrence of fire")
+           st.image("fire.jpg")
 
 elif optionm=="The Power of PCA":
     st.write("## 👉 One of the main purposes of the PCA is the dimensionality reduction😁😁")
@@ -469,8 +474,6 @@ elif optionm=="👉 Feel free for mining to discover more insights 😀🤔😁�
             
             cp1 = px.strip(forest_fires, y=optionc1, x=optionc2, orientation="h",color=optionc1,width=950, height=500)
             st.plotly_chart(cp1)
-            
-
         elif pt=="boxplot":
             st.write('''
                   # Box plot
@@ -487,57 +490,84 @@ elif optionm=="Exploratory Data Analysis":
     st.write("[Project_Forest_Fires_Data_Cleaning](https://colab.research.google.com/drive/1alWrrxH_Hp_1s--hUYEon5TOpNCJ8UI1?usp=sharing)")
     st.write("[Forest_Fires_Exploratory_Data_Analysis](https://colab.research.google.com/drive/1e0vXykPnHDJDMOL69bZA29c5_PD28cKu?usp=sharing)")
     st.write("[GitHub](https://github.com/Nitish-Satya-Sai/Project_Forest_Fires.git)")
-# =============================================================================
-#     col6,col7 = st.columns(2,gap="medium")
-#     with col6:
-#         imj1 = Image.open("j1.png")
-#         st.image(imj1)
-#     with col7:
-#         imj2 = Image.open("j2.png")
-#         st.image(imj2)
-#     col8,col9 = st.columns(2,gap="medium")
-#     with col8:
-#         imj1 = Image.open("j3.png")
-#         st.image(imj1)
-#     with col9:
-#         imj2 = Image.open("j4.png")
-#         st.image(imj2)
-#     col10,col11 = st.columns(2,gap="medium")
-#     with col10:
-#         imj1 = Image.open("j5.png")
-#         st.image(imj1)
-#     with col11:
-#         imj2 = Image.open("j6.png")
-#         st.image(imj2)
-#     col12,col13 = st.columns(2,gap="medium")
-#     with col12:
-#         imj1 = Image.open("j7.png")
-#         st.image(imj1)
-#     with col13:
-#         imj2 = Image.open("j8.png")
-#         st.image(imj2)
-#     col14,col15 = st.columns(2,gap="medium")
-#     with col14:
-#         imj1 = Image.open("j9.png")
-#         st.image(imj1)
-#     with col15:
-#         imj2 = Image.open("j10.png")
-#         st.image(imj2)
-#     col16,col17 = st.columns(2,gap="medium")
-#     with col16:
-#         imj1 = Image.open("j11.png")
-#         st.image(imj1)
-#     with col17:
-#         imj2 = Image.open("j12.png")
-#         st.image(imj2)
-#     col18,col19 = st.columns(2,gap="medium")
-#     with col18:
-#         imj1 = Image.open("j13.png")
-#         st.image(imj1)
-#     with col19:
-#         imj2 = Image.open("j14.png")
-#         st.image(imj2)
-# =============================================================================
+    col6,col7 = st.columns(2,gap="medium")
+    with col6:
+        imj1 = Image.open("1.png")
+        st.image(imj1)
+    with col7:
+        imj2 = Image.open("2.png")
+        st.image(imj2)
+    col8,col9 = st.columns(2,gap="medium")
+    with col8:
+        imj1 = Image.open("3.png")
+        st.image(imj1)
+    with col9:
+        imj2 = Image.open("4.png")
+        st.image(imj2)
+    col10,col11 = st.columns(2,gap="medium")
+    with col10:
+        imj1 = Image.open("5.png")
+        st.image(imj1)
+    with col11:
+        imj2 = Image.open("6.png")
+        st.image(imj2)
+    col12,col13 = st.columns(2,gap="medium")
+    with col12:
+        imj1 = Image.open("7.png")
+        st.image(imj1)
+    with col13:
+        imj2 = Image.open("8.png")
+        st.image(imj2)
+    col14,col15 = st.columns(2,gap="medium")
+    with col14:
+        imj1 = Image.open("9.png")
+        st.image(imj1)
+    with col15:
+        imj2 = Image.open("10.png")
+        st.image(imj2)
+    col16,col17 = st.columns(2,gap="medium")
+    with col16:
+        imj1 = Image.open("11.png")
+        st.image(imj1)
+    with col17:
+        imj2 = Image.open("12.png")
+        st.image(imj2)
+    col18,col19 = st.columns(2,gap="medium")
+    with col18:
+        imj1 = Image.open("13.png")
+        st.image(imj1)
+    with col19:
+        imj2 = Image.open("14.png")
+        st.image(imj2)
+    col20,col21 = st.columns(2,gap="medium")
+    with col20:
+        imj1 = Image.open("15.png")
+        st.image(imj1)
+    with col21:
+        imj2 = Image.open("16.png")
+        st.image(imj2)
+    col22,col23 = st.columns(2,gap="medium")
+    with col22:
+        imj1 = Image.open("17.png")
+        st.image(imj1)
+    with col23:
+        imj2 = Image.open("18.png")
+        st.image(imj2)
+    col24,col25 = st.columns(2,gap="medium")
+    with col24:
+        imj1 = Image.open("19.png")
+        st.image(imj1)
+    with col25:
+        imj2 = Image.open("20.png")
+        st.image(imj2)
+    col26,col27 = st.columns(2,gap="medium")
+    with col26:
+        imj1 = Image.open("21.png")
+        st.image(imj1)
+    with col27:
+        imj2 = Image.open("22.png")
+        st.image(imj2)
+
 
 
  

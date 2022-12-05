@@ -375,7 +375,7 @@ elif optionm=="Forest Fires Prediction":
         if int(prediction[0])==0:
            st.write("There is no fire occurrence")
            st.image("nofire.png")
-        elif int(prediction[0]==1):
+        elif int(prediction[0])==1:
            st.write("There is an occurrence of fire")
            st.image("fire.jpg")
 

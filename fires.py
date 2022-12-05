@@ -287,7 +287,7 @@ elif optionm=="Model Building Stack":
            st.text({'criterion': 'gini', 'max_depth': 1, 'n_estimators': 50})
            st.write("### The following are the best paramters of Decision Tree Classifier algorithm")
            st.text({'criterion': 'gini', 'max_depth': 3})
-           st.write("## So, finally our best model is RandomForest Classifier Algorithm, which acheives a best score of 97.96%)
+           st.write("## So, finally our best model is RandomForest Classifier Algorithm, which acheives a best score of 97.96%")
            st.write("### Finally, I will use the RandomForest Algorithm for the Real-time data predictions.")
         elif optionht==imp_list_of_options[1]:
             model_params = {

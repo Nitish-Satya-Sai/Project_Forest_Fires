@@ -374,10 +374,10 @@ elif optionm=="Forest Fires Prediction":
         prediction = rf.predict(df1)
         if int(prediction[0])==0:
            st.write("There is no fire occurrence")
-           st.image("nofire.png")
+           st.image("nofire.png",width=200)
         elif int(prediction[0])==1:
            st.write("There is an occurrence of fire")
-           st.image("fire.jpg")
+           st.image("fire.jpg",width=200)
 
 elif optionm=="The Power of PCA":
     st.write("## 👉 One of the main purposes of the PCA is the dimensionality reduction😁😁")

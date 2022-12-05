@@ -273,7 +273,7 @@ elif optionm=="Model Building Stack":
     with tab4:
         st.write("#### Here, I'm considering some important parameters of each algorithm for Hyperparameter Tuning")
         st.write("Excited to see the results with best parameters & best scores😱😱😱🤩🤩")
-        imp_list_of_options=["Static results (The results of Hyperparamter Tuning stored by setting a constant random seed)"
+        imp_list_of_options=["Static results (The results of Hyperparamter Tuning stored by setting a fixed random seed)"
                                              ,"Dynamic Results (The entire Hyper paramter tuning code runs, Time Consuming process)"]
         optionht = st.radio("Please select one option",["Static results (The results of Hyperparamter Tuning stored by setting a constant random seed)"
                                              ,"Dynamic Results (The entire Hyper paramter tuning code runs, Time Consuming process)"],index=0)

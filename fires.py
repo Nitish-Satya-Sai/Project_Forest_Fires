@@ -227,7 +227,7 @@ elif optionm=="Model Building Stack":
         st.write("### The Random Forest Algorithm 🌳🌳🌳🌴🌲🎄..... performs better than the remaining algorithms")
     
     with tab3:
-        folds = st.number_input("Please enter the number of folds/splits",value=5,min_value=5,max_value=20,step=1)
+        folds = int(st.number_input("Please enter the number of folds/splits",value=5,min_value=5,max_value=20,step=1))
         kf = KFold(n_splits=folds,shuffle=True,random_state=42)
         st.header("K-Nearest Neighbors Classifier")
         temp=[]

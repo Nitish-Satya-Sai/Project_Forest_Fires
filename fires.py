@@ -271,8 +271,26 @@ elif optionm=="Model Building Stack":
         st.metric("The average accuracy is: ",str(round(temp_array.mean()*100,2))+"%")
         st.write("### Again the Random Forest Algorithm is the best estimator among three estimators")
     with tab4:
-        st.write("#### Here, I'm considering some important parameters of each algorithm for Hyperparameter Tuning")
-        st.write("Excited to see the results with best parameters & best scores😱😱😱🤩🤩")
+    st.write("#### Here, I'm considering some important parameters of each algorithm for Hyperparameter Tuning")
+    st.write("Excited to see the results with best parameters & best scores😱😱😱🤩🤩")
+    imp_list_of_options=["Static results (The results of Hyperparamter Tuning stored by setting a constant random seed)"
+                                         ,"Dynamic Results (The entire Hyper paramter tuning code runs, Time Consuming process)"]
+    optionht = st.radio("Please select one option",["Static results (The results of Hyperparamter Tuning stored by setting a constant random seed)"
+                                         ,"Dynamic Results (The entire Hyper paramter tuning code runs, Time Consuming process)"],index=0)
+    if optionht==imp_list_of_options[0]:
+       st.write(pd.DataFrame({"Classification Models/Estimators"
+                              :["KNearestNeighbors","RandomForest","DecisionTree"],
+                              "Best Scores (in %)":[0.9384*100,0.9796*100,0.9795*100]}))
+       st.write("### The following are the best paramters of K Nearest Neighbors Classifier algorithm")
+       st.text({'metric': 'manhattan', 'n_neighbors': 5})
+       st.write("### The following are the best paramters of Random Forest Classifier algorithm")
+       st.text({'criterion': 'gini', 'max_depth': 1, 'n_estimators': 50})
+       st.write("### The following are the best paramters of Decision Tree Classifier algorithm")
+       st.text({'criterion': 'gini', 'max_depth': 3})
+       st.write("## So, finally our best model is RandomForest Classifier Algorithm, which acheives a best score of 97.96%)
+       st.write("### Finally, I will use the RandomForest Algorithm for the Real-time data predictions.")
+    elif optionht==imp_list_of_options[1]:
+        
         model_params = {
                     'KNN': {
                     'model': KNeighborsClassifier(),
@@ -316,7 +334,7 @@ elif optionm=="Model Building Stack":
         scores.append({
         'model': rfc[0],
         'best_score': gscv2.best_score_,
- 
+     
         })
         parameters.append(gscv2.best_params_)
         
@@ -326,7 +344,7 @@ elif optionm=="Model Building Stack":
         scores.append({
         'model': dtc[0],
         'best_score': gscv3.best_score_,
-  
+      
         })
         parameters.append(gscv3.best_params_)
         

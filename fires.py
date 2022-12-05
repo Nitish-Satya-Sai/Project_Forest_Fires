@@ -174,7 +174,7 @@ elif optionm=="Model Building Stack":
             knn = KNeighborsClassifier(n_neighbors=5)
             acc,cfm = helper_friend(X,Target_encoded,1,knn)
 
-            st.metric("Accuracy",str(round(acc,4))+"%")
+            st.metric("Accuracy",str(round(acc,4)*100)+"%")
  
             plt.figure(figsize=(3,2))
             fig1 = sns.heatmap(cfm,annot=True,cmap="rocket_r")
@@ -183,7 +183,7 @@ elif optionm=="Model Building Stack":
             knn = KNeighborsClassifier(n_neighbors=5)
             acc,cfm = helper_friend(X,Target_encoded,0,knn)
 
-            st.metric("Accuracy",str(round(acc,4))+"%")
+            st.metric("Accuracy",str(round(acc,4)*100)+"%")
             plt.figure(figsize=(3,2))
             fig2 = sns.heatmap(cfm,annot=True,cmap="rocket_r")
             st.pyplot(plt.gcf())
@@ -193,7 +193,7 @@ elif optionm=="Model Building Stack":
             DTC = DecisionTreeClassifier(random_state=42)
             acc,cfm = helper_friend(X,Target_encoded,1,DTC)
 
-            st.metric("Accuracy",str(round(acc,4))+"%")
+            st.metric("Accuracy",str(round(acc,4)*100)+"%")
             plt.figure(figsize=(3,2))
             fig3 = sns.heatmap(cfm,annot=True,cmap="rocket_r")
             st.pyplot(plt.gcf())
@@ -201,7 +201,7 @@ elif optionm=="Model Building Stack":
             DTC = DecisionTreeClassifier(random_state=42)
             acc,cfm = helper_friend(X,Target_encoded,1,DTC)
 
-            st.metric("Accuracy",str(round(acc,4))+"%")
+            st.metric("Accuracy",str(round(acc,4)*100)+"%")
             plt.figure(figsize=(3,2))
             fig4 = sns.heatmap(cfm,annot=True,cmap="rocket_r")
             st.pyplot(plt.gcf())
@@ -212,7 +212,7 @@ elif optionm=="Model Building Stack":
             RFC = RandomForestClassifier(random_state=42)
             acc,cfm = helper_friend(X,Target_encoded,1,RFC)
 
-            st.metric("Accuracy",str(round(acc,4))+"%")
+            st.metric("Accuracy",str(round(acc,4)*100)+"%")
             plt.figure(figsize=(3,2))
             fig5 = sns.heatmap(cfm,annot=True,cmap="rocket_r")
             st.pyplot(plt.gcf())
@@ -220,14 +220,14 @@ elif optionm=="Model Building Stack":
             RFC = RandomForestClassifier(random_state=42)
             acc,cfm = helper_friend(X,Target_encoded,1,RFC)
 
-            st.metric("Accuracy",str(round(acc,4))+"%")
+            st.metric("Accuracy",str(round(acc,4)*100)+"%")
             plt.figure(figsize=(3,2))
             fig6 = sns.heatmap(cfm,annot=True,cmap="rocket_r")
             st.pyplot(plt.gcf())
-        st.write("The Random Forest Algorithm 🌳🌳🌳🌴🌲🎄..... performs better than the remaining algorithms")
+        st.write("### The Random Forest Algorithm 🌳🌳🌳🌴🌲🎄..... performs better than the remaining algorithms")
     
     with tab3:
-        folds = st.number_input("Please enter the number of folds/splits",value=10)
+        folds = st.number_input("Please enter the number of folds/splits",value=5,min_value=5,max_value=20,step=1)
         kf = KFold(n_splits=folds,shuffle=True,random_state=42)
         st.header("K-Nearest Neighbors Classifier")
         temp=[]

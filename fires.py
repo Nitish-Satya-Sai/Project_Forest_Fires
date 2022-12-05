@@ -271,93 +271,92 @@ elif optionm=="Model Building Stack":
         st.metric("The average accuracy is: ",str(round(temp_array.mean()*100,2))+"%")
         st.write("### Again the Random Forest Algorithm is the best estimator among three estimators")
     with tab4:
-    st.write("#### Here, I'm considering some important parameters of each algorithm for Hyperparameter Tuning")
-    st.write("Excited to see the results with best parameters & best scores😱😱😱🤩🤩")
-    imp_list_of_options=["Static results (The results of Hyperparamter Tuning stored by setting a constant random seed)"
-                                         ,"Dynamic Results (The entire Hyper paramter tuning code runs, Time Consuming process)"]
-    optionht = st.radio("Please select one option",["Static results (The results of Hyperparamter Tuning stored by setting a constant random seed)"
-                                         ,"Dynamic Results (The entire Hyper paramter tuning code runs, Time Consuming process)"],index=0)
-    if optionht==imp_list_of_options[0]:
-       st.write(pd.DataFrame({"Classification Models/Estimators"
-                              :["KNearestNeighbors","RandomForest","DecisionTree"],
-                              "Best Scores (in %)":[0.9384*100,0.9796*100,0.9795*100]}))
-       st.write("### The following are the best paramters of K Nearest Neighbors Classifier algorithm")
-       st.text({'metric': 'manhattan', 'n_neighbors': 5})
-       st.write("### The following are the best paramters of Random Forest Classifier algorithm")
-       st.text({'criterion': 'gini', 'max_depth': 1, 'n_estimators': 50})
-       st.write("### The following are the best paramters of Decision Tree Classifier algorithm")
-       st.text({'criterion': 'gini', 'max_depth': 3})
-       st.write("## So, finally our best model is RandomForest Classifier Algorithm, which acheives a best score of 97.96%)
-       st.write("### Finally, I will use the RandomForest Algorithm for the Real-time data predictions.")
-    elif optionht==imp_list_of_options[1]:
-        
-        model_params = {
-                    'KNN': {
-                    'model': KNeighborsClassifier(),
-                    'params' : {
-                        'n_neighbors': [3,5,7],
-                        "metric":["cosine","manhattan","euclidean"]
-                    }  
-                    },
-                    'random_forest': {
-                    'model': RandomForestClassifier(random_state=42),
-                    'params' : {
-                        'n_estimators': [50,100,150],
-                        "criterion" : ["gini", "entropy", "log_loss"],
-                        "max_depth":list(range(1,4))
-                    }
-                    },
-                    'Decision_Tree' : {
-                    'model':DecisionTreeClassifier(random_state=42),
-                    'params': {
-                        "criterion" : ["gini", "entropy", "log_loss"],
-                        "max_depth":list(range(1,4))
-                    }
-                    }
-                    }
-        scores = []
-        parameters=[]
-        knn,rfc,dtc = model_params.items()
-        
-        gscv1 =  GridSearchCV(knn[1]["model"],knn[1]["params"], cv=5, return_train_score=False)
-        ss = StandardScaler()
-        X_scaled = ss.fit_transform(X)
-        gscv1.fit(X_scaled, Target_encoded)
-        scores.append({
-        'model': knn[0],
-        'best_score': gscv1.best_score_,
-        })
-        parameters.append(gscv1.best_params_)
-        
-        gscv2 =  GridSearchCV(rfc[1]["model"],rfc[1]["params"], cv=5, return_train_score=False)
-        gscv2.fit(X, Target_encoded)
-        scores.append({
-        'model': rfc[0],
-        'best_score': gscv2.best_score_,
-     
-        })
-        parameters.append(gscv2.best_params_)
-        
-        
-        gscv3 =  GridSearchCV(dtc[1]["model"],dtc[1]["params"], cv=5, return_train_score=False)
-        gscv3.fit(X, Target_encoded)
-        scores.append({
-        'model': dtc[0],
-        'best_score': gscv3.best_score_,
-      
-        })
-        parameters.append(gscv3.best_params_)
-        
-        my_hy_data  = pd.DataFrame(scores,columns=['model','best_score'])
-        st.write(my_hy_data)
-        st.write("### The following are the best paramters of K Nearest Neighbors Classifier algorithm")
-        st.text(parameters[0])
-        st.write("### The following are the best paramters of Random Forest Classifier algorithm")
-        st.text(parameters[1])
-        st.write("### The following are the best paramters of Decision Tree Classifier algorithm")
-        st.text(parameters[2])
-        st.write("## So, finally our best model is RandomForest Classifier Algorithm, which acheives a best score of {}%".format(round(gscv2.best_score_*100,2)))
-        st.write("### Finally, I will use the RandomForest Algorithm for the Real-time data predictions.")
+        st.write("#### Here, I'm considering some important parameters of each algorithm for Hyperparameter Tuning")
+        st.write("Excited to see the results with best parameters & best scores😱😱😱🤩🤩")
+        imp_list_of_options=["Static results (The results of Hyperparamter Tuning stored by setting a constant random seed)"
+                                             ,"Dynamic Results (The entire Hyper paramter tuning code runs, Time Consuming process)"]
+        optionht = st.radio("Please select one option",["Static results (The results of Hyperparamter Tuning stored by setting a constant random seed)"
+                                             ,"Dynamic Results (The entire Hyper paramter tuning code runs, Time Consuming process)"],index=0)
+        if optionht==imp_list_of_options[0]:
+           st.write(pd.DataFrame({"Classification Models/Estimators"
+                                  :["KNearestNeighbors","RandomForest","DecisionTree"],
+                                  "Best Scores (in %)":[0.9384*100,0.9796*100,0.9795*100]}))
+           st.write("### The following are the best paramters of K Nearest Neighbors Classifier algorithm")
+           st.text({'metric': 'manhattan', 'n_neighbors': 5})
+           st.write("### The following are the best paramters of Random Forest Classifier algorithm")
+           st.text({'criterion': 'gini', 'max_depth': 1, 'n_estimators': 50})
+           st.write("### The following are the best paramters of Decision Tree Classifier algorithm")
+           st.text({'criterion': 'gini', 'max_depth': 3})
+           st.write("## So, finally our best model is RandomForest Classifier Algorithm, which acheives a best score of 97.96%)
+           st.write("### Finally, I will use the RandomForest Algorithm for the Real-time data predictions.")
+        elif optionht==imp_list_of_options[1]:
+            model_params = {
+                        'KNN': {
+                        'model': KNeighborsClassifier(),
+                        'params' : {
+                            'n_neighbors': [3,5,7],
+                            "metric":["cosine","manhattan","euclidean"]
+                        }  
+                        },
+                        'random_forest': {
+                        'model': RandomForestClassifier(random_state=42),
+                        'params' : {
+                            'n_estimators': [50,100,150],
+                            "criterion" : ["gini", "entropy", "log_loss"],
+                            "max_depth":list(range(1,4))
+                        }
+                        },
+                        'Decision_Tree' : {
+                        'model':DecisionTreeClassifier(random_state=42),
+                        'params': {
+                            "criterion" : ["gini", "entropy", "log_loss"],
+                            "max_depth":list(range(1,4))
+                        }
+                        }
+                        }
+            scores = []
+            parameters=[]
+            knn,rfc,dtc = model_params.items()
+            
+            gscv1 =  GridSearchCV(knn[1]["model"],knn[1]["params"], cv=5, return_train_score=False)
+            ss = StandardScaler()
+            X_scaled = ss.fit_transform(X)
+            gscv1.fit(X_scaled, Target_encoded)
+            scores.append({
+            'model': knn[0],
+            'best_score': gscv1.best_score_,
+            })
+            parameters.append(gscv1.best_params_)
+            
+            gscv2 =  GridSearchCV(rfc[1]["model"],rfc[1]["params"], cv=5, return_train_score=False)
+            gscv2.fit(X, Target_encoded)
+            scores.append({
+            'model': rfc[0],
+            'best_score': gscv2.best_score_,
+         
+            })
+            parameters.append(gscv2.best_params_)
+            
+            
+            gscv3 =  GridSearchCV(dtc[1]["model"],dtc[1]["params"], cv=5, return_train_score=False)
+            gscv3.fit(X, Target_encoded)
+            scores.append({
+            'model': dtc[0],
+            'best_score': gscv3.best_score_,
+          
+            })
+            parameters.append(gscv3.best_params_)
+            
+            my_hy_data  = pd.DataFrame(scores,columns=['model','best_score'])
+            st.write(my_hy_data)
+            st.write("### The following are the best paramters of K Nearest Neighbors Classifier algorithm")
+            st.text(parameters[0])
+            st.write("### The following are the best paramters of Random Forest Classifier algorithm")
+            st.text(parameters[1])
+            st.write("### The following are the best paramters of Decision Tree Classifier algorithm")
+            st.text(parameters[2])
+            st.write("## So, finally our best model is RandomForest Classifier Algorithm, which acheives a best score of {}%".format(round(gscv2.best_score_*100,2)))
+            st.write("### Finally, I will use the RandomForest Algorithm for the Real-time data predictions.")
         
 elif optionm=="Forest Fires Prediction":
     col1,col2,col3,col4,col5 = st.columns(5,gap="large")
@@ -585,15 +584,3 @@ elif optionm=="Exploratory Data Analysis":
     with col27:
         imj2 = Image.open("22.png")
         st.image(imj2)
-
-
-
- 
-    
-    
-    
-
-    
-    
-
-

@@ -183,10 +183,11 @@ elif optionm=="Model Building Stack":
         if options=="Scaling the Input Features":
             knn = KNeighborsClassifier(n_neighbors=5)
             acc,cfm,cr = helper_friend(X,Target_encoded,1,knn)
-
-            st.metric("Accuracy",str(round(acc,4)*100)+"%")
             st.write("### Classification Report")
             st.write(cr)
+
+            st.metric("Accuracy",str(round(acc,4)*100)+"%")
+
  
             plt.figure(figsize=(3,2))
             fig1 = sns.heatmap(cfm,annot=True,cmap="rocket_r")
@@ -194,10 +195,11 @@ elif optionm=="Model Building Stack":
         elif options=="Without Scaling the Input Features":
             knn = KNeighborsClassifier(n_neighbors=5)
             acc,cfm,cr = helper_friend(X,Target_encoded,0,knn)
-
-            st.metric("Accuracy",str(round(acc,4)*100)+"%")
             st.write("### Classification Report")
             st.write(cr)
+
+            st.metric("Accuracy",str(round(acc,4)*100)+"%")
+
             plt.figure(figsize=(3,2))
             fig2 = sns.heatmap(cfm,annot=True,cmap="rocket_r")
             st.pyplot(plt.gcf())

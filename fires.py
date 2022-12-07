@@ -46,6 +46,7 @@ X.columns=["Temperature in Celsius degrees","Relative Humidity in %","Wind speed
            "Rain(total day in mm)","Fine Fuel Moisture Code (FFMC)","Duff Moisture Code (DMC)",
            "Drought Code (DC) index","Initial Spread Index (ISI)","Buildup Index (BUI)","Fire Weather Index (FWI)"]
 
+
 def helper_friend(data_x,data_y,choice,classifier):
     X_train,X_test,y_train,y_test = train_test_split(data_x,data_y,test_size=0.3,random_state=42)
     if (choice==1):
@@ -77,7 +78,11 @@ def helper_friend(data_x,data_y,choice,classifier):
         predictions = my_model.predict(X_test_scaled)
         Acc = accuracy_score(y_test,predictions)
         cfm = confusion_matrix(y_test,predictions)
-        return (Acc,cfm)
+        cr = classification_report(y_test,predictions,output_dict=True)
+        df = pd.DataFrame(cr)
+        df1 = df.iloc[:,0:2]
+        df1.columns=["Class-0","Class-1"]
+        return (Acc,cfm,df1)
         
         
     elif(choice==0):
@@ -87,7 +92,11 @@ def helper_friend(data_x,data_y,choice,classifier):
         predictions = my_model.predict(X_test)
         Acc = accuracy_score(y_test,predictions)
         cfm = confusion_matrix(y_test,predictions)
-        return (Acc,cfm)
+        cr = classification_report(y_test,predictions,output_dict=True)
+        df = pd.DataFrame(cr)
+        df1 = df.iloc[:,0:2]
+        df1.columns=["Class-0","Class-1"]
+        return (Acc,cfm,df1)
 def helper_2(X_train, X_test,y_train,y_test,classifier):
     my_model = classifier.fit(X_train,y_train)
     return accuracy_score(y_test,my_model.predict(X_test))
@@ -172,18 +181,22 @@ elif optionm=="Model Building Stack":
         st.header("K-Nearest Neighbors Classifier")
         if options=="Scaling the Input Features":
             knn = KNeighborsClassifier(n_neighbors=5)
-            acc,cfm = helper_friend(X,Target_encoded,1,knn)
+            acc,cfm,cr = helper_friend(X,Target_encoded,1,knn)
 
             st.metric("Accuracy",str(round(acc,4)*100)+"%")
+            st.write("### Classification Report")
+            st.write(cr)
  
             plt.figure(figsize=(3,2))
             fig1 = sns.heatmap(cfm,annot=True,cmap="rocket_r")
             st.pyplot(plt.gcf())
         elif options=="Without Scaling the Input Features":
             knn = KNeighborsClassifier(n_neighbors=5)
-            acc,cfm = helper_friend(X,Target_encoded,0,knn)
+            acc,cfm,cr = helper_friend(X,Target_encoded,0,knn)
 
             st.metric("Accuracy",str(round(acc,4)*100)+"%")
+            st.write("### Classification Report")
+            st.write(cr)
             plt.figure(figsize=(3,2))
             fig2 = sns.heatmap(cfm,annot=True,cmap="rocket_r")
             st.pyplot(plt.gcf())
@@ -191,7 +204,9 @@ elif optionm=="Model Building Stack":
         st.header("Decision Tree Classifier 🌳")
         if options=="Scaling the Input Features":
             DTC = DecisionTreeClassifier(random_state=42)
-            acc,cfm = helper_friend(X,Target_encoded,1,DTC)
+            acc,cfm,cr = helper_friend(X,Target_encoded,1,DTC)
+            st.write("### Classification Report")
+            st.write(cr)
 
             st.metric("Accuracy",str(round(acc,4)*100)+"%")
             plt.figure(figsize=(3,2))
@@ -199,7 +214,9 @@ elif optionm=="Model Building Stack":
             st.pyplot(plt.gcf())
         elif options=="Without Scaling the Input Features":
             DTC = DecisionTreeClassifier(random_state=42)
-            acc,cfm = helper_friend(X,Target_encoded,1,DTC)
+            acc,cfm,cr = helper_friend(X,Target_encoded,1,DTC)
+            st.write("### Classification Report")
+            st.write(cr)
 
             st.metric("Accuracy",str(round(acc,4)*100)+"%")
             plt.figure(figsize=(3,2))
@@ -210,15 +227,20 @@ elif optionm=="Model Building Stack":
         st.header("Random Forest Classifier 🌳🌳🌳🌳........")
         if options=="Scaling the Input Features":
             RFC = RandomForestClassifier(random_state=42)
-            acc,cfm = helper_friend(X,Target_encoded,1,RFC)
+            acc,cfm,cr = helper_friend(X,Target_encoded,1,RFC)
+            st.write("### Classification Report")
+            st.write(cr)
 
             st.metric("Accuracy",str(round(acc,4)*100)+"%")
             plt.figure(figsize=(3,2))
             fig5 = sns.heatmap(cfm,annot=True,cmap="rocket_r")
             st.pyplot(plt.gcf())
+            
         elif options=="Without Scaling the Input Features":
             RFC = RandomForestClassifier(random_state=42)
-            acc,cfm = helper_friend(X,Target_encoded,1,RFC)
+            acc,cfm,cr = helper_friend(X,Target_encoded,1,RFC)
+            st.write("### Classification Report")
+            st.write(cr)
 
             st.metric("Accuracy",str(round(acc,4)*100)+"%")
             plt.figure(figsize=(3,2))

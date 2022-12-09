@@ -128,7 +128,7 @@ if optionm=="The Motivation behind the project":
     st.write('''
              
              
-             ##### To reach my goal, I researched the potential datasets, which is vital to begin digging the valuable insights from the data. Moreover, surprisingly, I found one dataset while I was going through the University of California, Irvine, repositories. And that, too, is the latest dataset donated in 2019. 
+             ##### To reach my goal, I researched the potential datasets, which is vital to begin digging the valuable insights from the data. Moreover, surprisingly, I found one dataset while I was going through the [University of California, Irvine, repositories](https://archive.ics.uci.edu/ml/datasets/Algerian+Forest+Fires+Dataset++). And that, too, is the latest dataset donated in 2019. 
              
              
              ''')
@@ -383,6 +383,7 @@ elif optionm=="Model Building Stack":
             st.write("### Finally, I will use the RandomForest Algorithm for the Real-time data predictions.")
         
 elif optionm=="Forest Fires Prediction":
+    st.write("In this section, I used the best algorithm i.e. Random Forest Classifier for predictions")
     col1,col2,col3,col4,col5 = st.columns(5,gap="large")
     with col1:
         v1 = st.slider(label = X.columns[0],value = float(X[X.columns[0]].min()),min_value = X[X.columns[0]].min(),max_value=X[X.columns[0]].max(),step=0.1)
